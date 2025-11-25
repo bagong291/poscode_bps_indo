@@ -5,14 +5,16 @@ import Link from "next/link";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { MapPin } from "lucide-react";
 
-export const dynamic = "force-static";
-export const revalidate = 3600; // Revalidate every hour
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
 
-export const metadata: Metadata = {
-  title: "Daftar Provinsi Indonesia",
-  description: "Jelajah provinsi untuk melihat daftar kabupaten dan kode pos.",
-  alternates: { canonical: "/provinsi" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Daftar Provinsi Indonesia",
+    description: "Jelajah provinsi untuk melihat daftar kabupaten dan kode pos.",
+    alternates: { canonical: "/provinsi" },
+  };
+}
 
 export default async function ProvinsiIndexPage() {
   const provinsiRows = await query<{ provinsi: string }>(

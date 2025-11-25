@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { MapPinned } from "lucide-react";
 
-export const dynamic = "force-static";
-export const revalidate = 3600; // Revalidate every hour
+export const dynamic = "force-dynamic";
+// export const revalidate = 3600; // Revalidate every hour
 
 type Params = { provinsi: string; kabupaten: string };
 

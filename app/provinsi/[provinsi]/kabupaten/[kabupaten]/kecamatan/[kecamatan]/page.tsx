@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { slugify } from "@/lib/slugify";
 
-export const dynamic = "force-static";
-export const revalidate = 3600; // Revalidate every hour
+export const dynamic = "force-dynamic";
+// export const revalidate = 3600; // Revalidate every hour
 
 type Params = { provinsi: string; kabupaten: string; kecamatan: string };
 
