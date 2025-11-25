@@ -12,6 +12,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Set build-time environment variables
+ENV DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bps"
+ENV NEXT_PUBLIC_BASE_URL="https://kodepos.online"
+
 # Build Next.js
 RUN npm run build
 

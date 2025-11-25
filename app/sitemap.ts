@@ -6,25 +6,36 @@ import { slugify } from '@/lib/slugify';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3002';
 
-  // Get total kelurahan count
-  const countResult = await query<{ count: string }>(
-    "SELECT COUNT(DISTINCT (provinsi, kabupaten, kecamatan, kelurahan)) as count FROM tbl_kodepos"
-  );
-  
-  const totalKelurahan = parseInt(countResult[0]?.count || '0');
-  const pageSize = 10000; // 10K per sitemap
-  const totalPages = Math.ceil(totalKelurahan / pageSize);
+  try {
+    // Get total kelurahan count
+    const countResult = await query<{ count: string }>(
+      "SELECT COUNT(DISTINCT (provinsi, kabupaten, kecamatan, kelurahan)) as count FROM tbl_kodepos"
+    );
+    
+    const totalKelurahan = parseInt(countResult[0]?.count || '0');
+    const pageSize = 10000; // 10K per sitemap
+    const totalPages = Math.ceil(totalKelurahan / pageSize);
 
-  // Return sitemap index entries
-  const sitemaps: MetadataRoute.Sitemap = [];
+    // Return sitemap index entries
+    const sitemaps: MetadataRoute.Sitemap = [];
 
-  // Add kelurahan sitemaps (split into multiple files)
-  for (let i = 0; i < totalPages; i++) {
-    sitemaps.push({
-      url: `${baseUrl}/sitemap/${i}.xml`,
-      changeFrequency: 'monthly',
-    });
+    // Add kelurahan sitemaps (split into multiple files)
+    for (let i = 0; i < totalPages; i++) {
+      sitemaps.push({
+        url: `${baseUrl}/sitemap/${i}.xml`,
+        changeFrequency: 'monthly',
+      });
+    }
+
+    return sitemaps;
+  } catch (error) {
+    console.error('Sitemap generation error (build time):', error);
+    // Return minimal sitemap if database not available during build
+    return [
+      {
+        url: `${baseUrl}/sitemap/0.xml`,
+        changeFrequency: 'monthly',
+      },
+    ];
   }
-
-  return sitemaps;
 }
