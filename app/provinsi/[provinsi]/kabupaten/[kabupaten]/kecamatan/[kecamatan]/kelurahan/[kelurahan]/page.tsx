@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   );
   
   const detail = rows[0];
-  const title = detail ? `Kode Pos ${detail.kelurahan} ${detail.kodepos} - ${detail.kecamatan}, ${detail.kabupaten}, ${detail.provinsi} | Indonesia` : `Kode Pos ${kelurahan} - Indonesia`;
+  const title = detail ? `Kode Pos ${detail.kelurahan} ${detail.kodepos} - ${detail.kecamatan}, ${detail.kabupaten}, ${detail.provinsi}` : `Kode Pos ${kelurahan}`;
   const description = detail ? `Kode pos ${detail.kodepos} untuk Kelurahan ${detail.kelurahan}, Kecamatan ${detail.kecamatan}, Kabupaten ${detail.kabupaten}, Provinsi ${detail.provinsi}. Data resmi dari BPS Indonesia.` : `Cari kode pos untuk ${kelurahan}, Indonesia.`;
   const url = `/provinsi/${provinsi}/kabupaten/${kabupaten}/kecamatan/${kecamatan}/kelurahan/${kelurahan}`;
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kodepos.online';

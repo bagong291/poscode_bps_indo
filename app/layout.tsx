@@ -17,11 +17,50 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kode Pos Indonesia",
-  description: "Cari kode pos kelurahan, kecamatan, kabupaten, dan provinsi di Indonesia.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://kodepos.online'),
+  title: {
+    default: 'Kode Pos Indonesia - Cari Kode Pos Seluruh Indonesia',
+    template: '%s | Kode Pos Indonesia',
+  },
+  description: "Cari kode pos kelurahan, kecamatan, kabupaten, dan provinsi di Indonesia. Data resmi dari BPS Indonesia.",
+  keywords: "kode pos indonesia, postal code, kode pos, cari kode pos, bps indonesia",
+  authors: [{ name: "Kode Pos Indonesia" }],
+  creator: "Kode Pos Indonesia",
+  publisher: "Kode Pos Indonesia",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'id_ID',
+    url: process.env.NEXT_PUBLIC_BASE_URL || 'https://kodepos.online',
+    siteName: 'Kode Pos Indonesia',
+    title: 'Kode Pos Indonesia - Cari Kode Pos Seluruh Indonesia',
+    description: 'Cari kode pos kelurahan, kecamatan, kabupaten, dan provinsi di Indonesia. Data resmi dari BPS Indonesia.',
+    images: [{
+      url: '/logo.png',
+      width: 512,
+      height: 512,
+      alt: 'Kode Pos Indonesia Logo',
+    }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Kode Pos Indonesia - Cari Kode Pos Seluruh Indonesia',
+    description: 'Cari kode pos kelurahan, kecamatan, kabupaten, dan provinsi di Indonesia.',
+    images: ['/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -32,7 +71,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-8J1LR125BG"></script>
         <script
@@ -45,10 +86,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
