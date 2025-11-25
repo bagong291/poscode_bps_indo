@@ -22,7 +22,7 @@ export async function query<T = any>(text: string, params: any[] = [], retries =
   for (let attempt = 0; attempt < retries; attempt++) {
     try {
       client = await pool.connect();
-      const res = await client.query<T>(text, params);
+      const res = await client.query(text, params);
       return res.rows as T[];
     } catch (error) {
       lastError = error;
