@@ -77,9 +77,7 @@ export default async function KodeposPage({ params }: { params: Promise<{ kodepo
             </div>
             <div className="flex items-center gap-2">
               <Badge className="bg-primary text-primary-foreground">{r.kodepos}</Badge>
-              <div onClick={(e) => e.preventDefault()}>
-                <CopyButton text={r.kodepos} />
-              </div>
+              <CopyButton text={r.kodepos} />
             </div>
           </Link>
         ))}
