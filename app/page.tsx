@@ -1,65 +1,87 @@
-import Image from "next/image";
+import { HomeSearch } from "@/components/home-search";
+import Link from "next/link";
+import { MapPin, Search as SearchIcon, List, Package } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-orange-50 via-amber-50 to-background dark:from-orange-950/20 dark:via-amber-950/10 dark:to-background"></div>
+        <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:py-24">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 dark:border-orange-800 dark:bg-orange-950/50 dark:text-orange-400">
+                <Package className="h-3 w-3" /> Data BPS Indonesia
+              </div>
+              <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+                Cari Kode Pos <span className="text-primary">Indonesia</span>
+              </h1>
+              <p className="mt-4 max-w-xl text-lg text-muted-foreground">
+                Temukan kode pos kelurahan dengan cepat, jelajahi kecamatan, kabupaten, dan provinsi. Data selaras dengan sumber resmi BPS.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link href="/provinsi" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-opacity hover:opacity-90">
+                  <MapPin className="h-4 w-4" /> Jelajahi Provinsi
+                </Link>
+                <Link href="/kodepos/23895" className="inline-flex items-center gap-2 rounded-lg border bg-card px-6 py-3 font-medium transition-colors hover:bg-accent hover:text-accent-foreground">
+                  <List className="h-4 w-4" /> Contoh Kode Pos
+                </Link>
+              </div>
+            </div>
+            <div className="rounded-2xl border bg-card p-6 shadow-lg">
+              <div className="mb-4 flex items-center gap-2">
+                <div className="rounded-lg bg-primary/10 p-2">
+                  <SearchIcon className="h-5 w-5 text-primary" />
+                </div>
+                <span className="font-semibold">Pencarian Cepat</span>
+              </div>
+              <HomeSearch />
+              <p className="mt-4 text-xs text-muted-foreground">
+                Coba cari: "purwodadi", "jakarta", atau nama kelurahan lainnya
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-4 py-12">
+        <h2 className="text-center text-2xl font-bold">Fitur Pencarian</h2>
+        <p className="mt-2 text-center text-muted-foreground">Akses data kode pos dengan berbagai cara</p>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Link href="/provinsi" className="group block rounded-xl border bg-card p-6 transition-all hover:border-primary hover:shadow-md">
+            <div className="mb-3 inline-flex rounded-lg bg-primary/10 p-3 transition-colors group-hover:bg-primary/20">
+              <MapPin className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Jelajah Provinsi</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Lihat daftar kabupaten di tiap provinsi Indonesia.</p>
+          </Link>
+          <Link href="/cari?q=purwodadi" className="group block rounded-xl border bg-card p-6 transition-all hover:border-primary hover:shadow-md">
+            <div className="mb-3 inline-flex rounded-lg bg-primary/10 p-3 transition-colors group-hover:bg-primary/20">
+              <SearchIcon className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Pencarian Kelurahan</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Cari berdasarkan nama kelurahan atau kecamatan.</p>
+          </Link>
+          <Link href="/kodepos/23895" className="group block rounded-xl border bg-card p-6 transition-all hover:border-primary hover:shadow-md">
+            <div className="mb-3 inline-flex rounded-lg bg-primary/10 p-3 transition-colors group-hover:bg-primary/20">
+              <List className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="font-semibold">Cari via Kode Pos</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Lihat semua kelurahan dengan kode pos tertentu.</p>
+          </Link>
+        </div>
+      </section>
+
+      <section className="border-t bg-muted/30 py-12">
+        <div className="mx-auto w-full max-w-6xl px-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            Data bersumber dari{" "}
+            <a href="https://sig.bps.go.id/bridging-kode/index" target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
+              Badan Pusat Statistik Indonesia
+            </a>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
