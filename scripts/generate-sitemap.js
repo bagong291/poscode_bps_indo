@@ -52,7 +52,7 @@ async function generateSitemaps() {
     );
 
     const totalKelurahan = kelurahanRows.rows.length;
-    const pageSize = 10000;
+    const pageSize = 500; // 500 URLs per sitemap
     const totalChunks = Math.ceil(totalKelurahan / pageSize);
 
     console.log(`📄 Total kelurahan: ${totalKelurahan}`);
