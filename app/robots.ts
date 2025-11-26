@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: [],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap:[`${baseUrl}/sitemap.xml`,`${baseUrl}/sitemap-1.xml`,`${baseUrl}/sitemap-2.xml`,`${baseUrl}/sitemap-3.xml`,`${baseUrl}/sitemap-4.xml`,`${baseUrl}/sitemap-5.xml`],
   };
 }
