@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const title = detail ? `Kode Pos ${detail.kelurahan} ${detail.kodepos} - ${detail.kecamatan}, ${detail.kabupaten}, ${detail.provinsi}` : `Kode Pos ${kelurahan}`;
   const description = detail ? `Kode pos ${detail.kodepos} untuk Kelurahan ${detail.kelurahan}, Kecamatan ${detail.kecamatan}, Kabupaten ${detail.kabupaten}, Provinsi ${detail.provinsi}. Data resmi dari BPS Indonesia.` : `Cari kode pos untuk ${kelurahan}, Indonesia.`;
   const url = `/provinsi/${provinsi}/kabupaten/${kabupaten}/kecamatan/${kecamatan}/kelurahan/${kelurahan}`;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://kodepos.online';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.kodepos.online';
   
   return {
     title,
@@ -99,37 +99,37 @@ export default async function KelurahanPage({ params }: { params: Promise<Params
             "@type": "ListItem",
             position: 1,
             name: "Beranda",
-            item: process.env.NEXT_PUBLIC_BASE_URL || "https://kodepos.online",
+            item: process.env.NEXT_PUBLIC_BASE_URL || "https://www.kodepos.online",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Provinsi",
-            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://kodepos.online"}/provinsi`,
+            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://www.kodepos.online"}/provinsi`,
           },
           {
             "@type": "ListItem",
             position: 3,
             name: detail.provinsi,
-            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://kodepos.online"}/provinsi/${provinsi}`,
+            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://www.kodepos.online"}/provinsi/${provinsi}`,
           },
           {
             "@type": "ListItem",
             position: 4,
             name: detail.kabupaten,
-            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://kodepos.online"}/provinsi/${provinsi}/kabupaten/${kabupaten}`,
+            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://www.kodepos.online"}/provinsi/${provinsi}/kabupaten/${kabupaten}`,
           },
           {
             "@type": "ListItem",
             position: 5,
             name: detail.kecamatan,
-            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://kodepos.online"}/provinsi/${provinsi}/kabupaten/${kabupaten}/kecamatan/${kecamatan}`,
+            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://www.kodepos.online"}/provinsi/${provinsi}/kabupaten/${kabupaten}/kecamatan/${kecamatan}`,
           },
           {
             "@type": "ListItem",
             position: 6,
             name: detail.kelurahan,
-            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://kodepos.online"}/provinsi/${provinsi}/kabupaten/${kabupaten}/kecamatan/${kecamatan}/kelurahan/${kelurahan}`,
+            item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://www.kodepos.online"}/provinsi/${provinsi}/kabupaten/${kabupaten}/kecamatan/${kecamatan}/kelurahan/${kelurahan}`,
           },
         ],
       }

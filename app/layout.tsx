@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://kodepos.online'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.kodepos.online'),
   title: {
     default: 'Kode Pos Indonesia - Cari Kode Pos Seluruh Indonesia',
     template: '%s | Kode Pos Indonesia',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: process.env.NEXT_PUBLIC_BASE_URL || 'https://kodepos.online',
+    url: process.env.NEXT_PUBLIC_BASE_URL || 'https://www.kodepos.online',
     siteName: 'Kode Pos Indonesia',
     title: 'Kode Pos Indonesia - Cari Kode Pos Seluruh Indonesia',
     description: 'Cari kode pos kelurahan, kecamatan, kabupaten, dan provinsi di Indonesia. Data resmi dari BPS Indonesia.',

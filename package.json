@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -H 0.0.0.0",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.12",
