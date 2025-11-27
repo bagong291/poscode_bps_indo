@@ -39,17 +39,17 @@ export const metadata: Metadata = {
     title: 'Kode Pos Indonesia - Cari Kode Pos Seluruh Indonesia',
     description: 'Cari kode pos kelurahan, kecamatan, kabupaten, dan provinsi di Indonesia. Data resmi dari BPS Indonesia.',
     images: [{
-      url: '/logo.png',
+      url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.kodepos.online'}/logo.png`,
       width: 512,
       height: 512,
       alt: 'Kode Pos Indonesia Logo',
     }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Kode Pos Indonesia - Cari Kode Pos Seluruh Indonesia',
     description: 'Cari kode pos kelurahan, kecamatan, kabupaten, dan provinsi di Indonesia.',
-    images: ['/logo.png'],
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.kodepos.online'}/logo.png`],
   },
   robots: {
     index: true,

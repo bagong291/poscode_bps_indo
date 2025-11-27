@@ -12,10 +12,34 @@ type Params = { provinsi: string };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { provinsi } = await params;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.kodepos.online';
+  const title = `Daftar Kabupaten di ${provinsi}`;
+  const description = `Jelajah kabupaten di Provinsi ${provinsi} untuk melihat kecamatan dan kode pos.`;
+  
   return {
-    title: `Daftar Kabupaten di ${provinsi}`,
-    description: `Jelajah kabupaten di Provinsi ${provinsi} untuk melihat kecamatan dan kode pos.`,
+    title,
+    description,
     alternates: { canonical: `/provinsi/${provinsi}` },
+    openGraph: {
+      title,
+      description,
+      url: `${baseUrl}/provinsi/${provinsi}`,
+      siteName: 'Kode Pos Indonesia',
+      locale: 'id_ID',
+      type: 'website',
+      images: [{
+        url: `${baseUrl}/logo.png`,
+        width: 512,
+        height: 512,
+        alt: 'Kode Pos Indonesia Logo',
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${baseUrl}/logo.png`],
+    },
   };
 }
 

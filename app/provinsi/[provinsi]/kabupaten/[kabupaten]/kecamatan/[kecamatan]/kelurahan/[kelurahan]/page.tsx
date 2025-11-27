@@ -39,11 +39,18 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       siteName: 'Kode Pos Indonesia',
       locale: 'id_ID',
       type: 'website',
+      images: [{
+        url: `${baseUrl}/logo.png`,
+        width: 512,
+        height: 512,
+        alt: 'Kode Pos Indonesia Logo',
+      }],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
+      images: [`${baseUrl}/logo.png`],
     },
   };
 }
