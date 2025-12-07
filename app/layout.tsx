@@ -69,6 +69,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.kodepos.online';
+  const logoUrl = `${baseUrl}/logo.png`;
+
+  const orgJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Kode Pos Indonesia",
+    url: baseUrl,
+    logo: logoUrl,
+  };
+
   return (
     <html lang="id" suppressHydrationWarning>
       <body
@@ -85,6 +96,10 @@ export default function RootLayout({
               gtag('config', 'G-8J1LR125BG');
             `,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
